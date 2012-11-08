@@ -1,0 +1,6 @@
+<h1>
+	Welcome back, <%= @account=current_account.email %>
+</h1>
+<span>
+	<%= link_to "Not " + @account + "?", signout_path, method: "delete" %>
+</span>
