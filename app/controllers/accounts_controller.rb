@@ -1,7 +1,5 @@
 class AccountsController < ApplicationController
-	def new
-		@account = Account.new
-	end
+	skip_before_filter	:check_authorization
 
 	def newUser
 		#@account = Account.new

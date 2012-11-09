@@ -15,13 +15,10 @@ class Account < ActiveRecord::Base
 
 	has_secure_password
 
-	#has_and_belongs_to_many :roles
+	has_and_belongs_to_many :roles
 
 	has_one :user, :dependent => :destroy
 	accepts_nested_attributes_for :user
-
-	#has_one :user#, dependent: :destroy
-	# accepts_nested_attributes_for :user
 
 	before_save { self.email.downcase! }
 	before_save :create_remember_token
