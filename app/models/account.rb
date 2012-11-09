@@ -1,11 +1,25 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  user_id         :integer
+#
+
 class Account < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation
-
+	belongs_to :user
 	has_secure_password
 
 	#has_and_belongs_to_many :roles
 
-	#has_one :user
+	#has_one :user#, dependent: :destroy
+	# accepts_nested_attributes_for :user
 
 	before_save { self.email.downcase! }
 	before_save :create_remember_token
