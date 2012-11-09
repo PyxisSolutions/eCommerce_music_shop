@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-	def new
+	def newUser
 		#@account = Account.new
 		@user = User.new
 		@user.account = Account.new
-		@user.account << Role.find_by_name("standard_user")
+		#@user.account << Role.find_by_name("standard_user")
 	end
 
 	def create

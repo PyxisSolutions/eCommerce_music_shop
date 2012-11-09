@@ -8,15 +8,17 @@
 #  remember_token  :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  user_id         :integer
 #
 
 class Account < ActiveRecord::Base
-	attr_accessible :email, :password, :password_confirmation
-	belongs_to :user
+	attr_accessible :email, :password, :password_confirmation, :user_attributes
+
 	has_secure_password
 
 	#has_and_belongs_to_many :roles
+
+	has_one :user, :dependent => :destroy
+	accepts_nested_attributes_for :user
 
 	#has_one :user#, dependent: :destroy
 	# accepts_nested_attributes_for :user

@@ -3,9 +3,19 @@ class AccountsController < ApplicationController
 		@account = Account.new
 	end
 
+	def newUser
+		#@account = Account.new
+		# @user = User.new
+		# @user.account = Account.new
+		#@user.account << Role.find_by_name("standard_user")
+		@account = Account.new
+		@account.user = User.new
+	end
+
 	def create
 		@account = Account.new(params[:account])
-		if :account.save
+		if @account.save
+			sign_in @account
 			flash[:success] = "Welcome to Sample App!"
   			redirect_to root_path
   		else
