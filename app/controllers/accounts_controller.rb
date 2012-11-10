@@ -10,8 +10,9 @@ class AccountsController < ApplicationController
 		@account.user = User.new
 	end
 
-	def create
+	def createUser
 		@account = Account.new(params[:account])
+		@account.roles << Role.find_by_name("standard_user")
 		if @account.save
 			sign_in @account
 			flash[:success] = "Welcome to Sample App!"
@@ -21,4 +22,21 @@ class AccountsController < ApplicationController
   		end
 	end
 	
+	def newBand
+		@account = Account.new
+		@account.band = Band.new
+	end
+
+	def createBand
+		@account = Account.new(params[:account])
+		@account.roles << Role.find_by_name("band")
+		if @account.save
+			#sign_in @account
+			#flash[:success] = "Welcome to Sample App!"
+  			redirect_to root_path
+  		else
+  			render 'new'
+  		end
+	end
+
 end

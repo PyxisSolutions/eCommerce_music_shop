@@ -3,10 +3,10 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for @account, :url => url_for(:action => 'createUser') do |f| %>
+		<%= form_for @account, :url => url_for(:action => 'createBand') do |f| %>
 			<%= render 'shared/error_messages', object: f.object %>
 			
-			<%= f.fields_for :user do |builder| %>
+			<%= f.fields_for :band do |builder| %>
 				<%= builder.label :name %>
 				<%= builder.text_field :name %>
 			<% end %>

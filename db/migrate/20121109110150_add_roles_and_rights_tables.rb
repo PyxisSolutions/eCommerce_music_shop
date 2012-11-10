@@ -1,6 +1,6 @@
 class AddRolesAndRightsTables < ActiveRecord::Migration
   def up
-  	create_table :roles_accounts, :id => false do |t|
+  	create_table :accounts_roles, :id => false do |t|
   		t.column "role_id", :integer
   		t.column "account_id", :integer
   	end
@@ -12,7 +12,7 @@ class AddRolesAndRightsTables < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :roles_accounts
+  	drop_table :accounts_roles
   	drop_table :roles
   	drop_table :rights
   	drop_table :rights_roles

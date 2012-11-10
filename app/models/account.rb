@@ -11,7 +11,7 @@
 #
 
 class Account < ActiveRecord::Base
-	attr_accessible :email, :password, :password_confirmation, :user_attributes
+	attr_accessible :email, :password, :password_confirmation, :user_attributes, :band_attributes
 
 	has_secure_password
 
@@ -19,6 +19,9 @@ class Account < ActiveRecord::Base
 
 	has_one :user, :dependent => :destroy
 	accepts_nested_attributes_for :user
+
+	has_one :band, :dependent => :destroy
+	accepts_nested_attributes_for :band
 
 	before_save { self.email.downcase! }
 	before_save :create_remember_token
