@@ -6,8 +6,6 @@
 #  name       :string(255)
 #  controller :string(255)
 #  action     :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
 #
 
 class Right < ActiveRecord::Base

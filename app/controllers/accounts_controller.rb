@@ -28,7 +28,7 @@ class AccountsController < ApplicationController
 		@account.roles << Role.find_by_name("band")
 		if @account.save
 			flash[:success] = @account.band.name + " added to the website!"
-  			redirect_to root_path
+  			redirect_to bands_path
   		else
   			render 'newBand'
   		end

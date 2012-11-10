@@ -1,6 +1,7 @@
 ECommerceMusicShop::Application.routes.draw do
   resources :accounts
   resources :users
+  resources :bands
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup'   => 'accounts#newUser'

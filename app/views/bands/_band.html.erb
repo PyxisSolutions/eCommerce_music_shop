@@ -1,0 +1,6 @@
+<li>
+	<%= link_to band.name, band %>
+	<% if admin? %>
+		| <%= link_to "delete", band, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
+</li>

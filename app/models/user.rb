@@ -10,9 +10,9 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name
-  belongs_to :account
+	attr_accessible :name
+	belongs_to :account,	:dependent => :destroy
 
-  validates	:name,	:presence => true,
-  					:length => { :maximum => 50 }
+	validates	:name,	:presence => true,
+  						:length => { :maximum => 50 }
 end

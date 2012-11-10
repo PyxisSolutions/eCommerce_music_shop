@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: rights
+# Table name: tracks
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  controller :string(255)
-#  action     :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  band_id    :integer
 #
 
 require 'spec_helper'
 
-describe Right do
+describe Track do
   pending "add some examples to (or delete) #{__FILE__}"
 end

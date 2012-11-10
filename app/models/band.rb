@@ -10,9 +10,11 @@
 #
 
 class Band < ActiveRecord::Base
-  attr_accessible :name
-  belongs_to :account
+	attr_accessible :name
+	belongs_to :account,	:dependent => :destroy
 
-    validates	:name,	:presence => true,
+	has_many :tracks, dependent: :destroy
+
+	validates	:name,	:presence => true,
   						:length => { :maximum => 255 }
 end

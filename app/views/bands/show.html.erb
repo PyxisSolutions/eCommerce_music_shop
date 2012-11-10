@@ -1,0 +1,19 @@
+<% provide(:title, @band.name) %>
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= @band.name %>
+			</h1>
+		</section>	
+	</aside>
+	<div class="span8">
+		<% if @band.tracks.any? %>
+			<h3>Tracks: (<%= @band.tracks.count %>)</h3>
+			<ol class="microposts">
+				<%= render @tracks %>
+			</ol>
+			<%= will_paginate @tracks %>
+		<% end %>
+	</div>
+</div>

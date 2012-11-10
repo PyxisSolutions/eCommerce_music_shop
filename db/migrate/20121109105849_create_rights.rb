@@ -4,8 +4,6 @@ class CreateRights < ActiveRecord::Migration
 	  t.column "name", :string
 	  t.column "controller", :string
 	  t.column "action", :string
-
-      t.timestamps
     end
   end
 end
