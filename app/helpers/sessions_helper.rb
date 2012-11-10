@@ -43,21 +43,14 @@ module SessionsHelper
 
 	def admin?
 		current_account.roles.detect{ |role| role.name == "admin" }
-		#detect_role("admin")
 	end
 
 	def band?
-		#detect_role("band")
-		current_account.roles.detect{ |role| role.name == "band" }
+		current_account.band
 	end
 
 	def standard_user?
-		#detect_role("standard_user")
-		current_account.roles.detect{ |role| role.name == "standard_user" }
-	end
-
-	def detect_role(role)
-		current_account.roles.detect{ |role| role.name == role }
+		current_account.user
 	end
 
 	def sign_in_create_account

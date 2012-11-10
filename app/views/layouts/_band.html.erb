@@ -1,0 +1,11 @@
+<% if band? %>
+	<li id="fat-menu" class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			Band <b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li><%= link_to "Band information", '#' %></li>
+			<li><%= link_to "Upload new songs", '#' %></li>
+		</ul>
+	</li>
+<% end %>

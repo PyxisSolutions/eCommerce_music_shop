@@ -1,24 +1,15 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'Sign up new band') %>
+<h1>Sign up new band</h1>
 
 <div class="row">
 	<div class="span6 offset3">
 		<%= form_for @account, :url => url_for(:action => 'createBand') do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
 			
 			<%= f.fields_for :band do |builder| %>
-				<%= builder.label :name %>
-				<%= builder.text_field :name %>
+				<%= render 'band_fields', builder: builder %>
 			<% end %>
 
-			<%= f.label :email %>
-			<%= f.text_field :email %>
-
-			<%= f.label :password %>
-			<%= f.password_field :password %>
-
-			<%= f.label :password_confirmation, "Confirm Password" %>
-			<%= f.password_field :password_confirmation %>
+			<%= render 'account_fields', f: f %>
 
 			<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 

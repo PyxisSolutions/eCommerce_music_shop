@@ -12,4 +12,7 @@
 class Band < ActiveRecord::Base
   attr_accessible :name
   belongs_to :account
+
+    validates	:name,	:presence => true,
+  						:length => { :maximum => 255 }
 end

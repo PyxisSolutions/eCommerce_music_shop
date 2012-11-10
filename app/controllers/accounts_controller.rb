@@ -2,10 +2,6 @@ class AccountsController < ApplicationController
 	skip_before_filter	:check_authorization
 
 	def newUser
-		#@account = Account.new
-		# @user = User.new
-		# @user.account = Account.new
-		#@user.account << Role.find_by_name("standard_user")
 		@account = Account.new
 		@account.user = User.new
 	end
@@ -18,7 +14,7 @@ class AccountsController < ApplicationController
 			flash[:success] = "Welcome to Sample App!"
   			redirect_to root_path
   		else
-  			render 'new'
+  			render 'newUser'
   		end
 	end
 	
@@ -31,11 +27,10 @@ class AccountsController < ApplicationController
 		@account = Account.new(params[:account])
 		@account.roles << Role.find_by_name("band")
 		if @account.save
-			#sign_in @account
-			#flash[:success] = "Welcome to Sample App!"
+			flash[:success] = @account.band.name + " added to the website!"
   			redirect_to root_path
   		else
-  			render 'new'
+  			render 'newBand'
   		end
 	end
 
