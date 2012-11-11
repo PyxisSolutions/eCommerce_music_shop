@@ -1,0 +1,18 @@
+<% provide(:title, 'New song') %>
+<h1>Upload song</h1>
+
+<%= form_for @track, :html => { :multipart => true } do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.hidden_field :band_id %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.file_field :song %>
+
+	<%= f.label :remote_song_url, "or song url" %>
+	<%= f.text_field :remote_song_url %>
+
+	<%= f.submit "Add song", class: "btn btn-large btn-primary"%>
+<% end %>
+

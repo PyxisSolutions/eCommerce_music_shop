@@ -6,6 +6,11 @@
 				<%= @band.name %>
 			</h1>
 		</section>	
+		<% if allow_upload? %>
+			<section>
+				<%= link_to "Add a song", new_track_path(:band_id => @band) %>
+			</section>
+		<% end %>
 	</aside>
 	<div class="span8">
 		<% if @band.tracks.any? %>

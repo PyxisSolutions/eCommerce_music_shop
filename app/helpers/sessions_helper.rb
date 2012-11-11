@@ -65,4 +65,9 @@ module SessionsHelper
       redirect_to(root_path) unless current_account?(@account) || admin?
     end
 
+    def allow_upload?
+    	@account = Account.find(params[:id])
+    	current_account?(@account) || admin?
+    end
+
 end
