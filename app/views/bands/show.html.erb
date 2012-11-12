@@ -9,6 +9,10 @@
 		<% if allow_upload? %>
 			<section>
 				<%= link_to "Add a song", new_track_path(:band_id => @band) %>
+				<%= form_for Track.new do |f| %>
+					<%= f.label :song, "Upload songs:" %>
+					<%= f.file_field :song, multiple: true, name: "track[song]" %>
+				<% end %>
 			</section>
 		<% end %>
 	</aside>
