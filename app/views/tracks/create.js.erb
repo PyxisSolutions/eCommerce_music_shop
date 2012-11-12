@@ -1,0 +1,5 @@
+<% if @track.new_record? %>
+	// render error stuff
+<% else %>
+	$(".microposts").append("<%= j render(@track) %>");
+<% end %>
