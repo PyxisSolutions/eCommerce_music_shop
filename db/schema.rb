@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110234537) do
+ActiveRecord::Schema.define(:version => 20121112183624) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20121110234537) do
   create_table "accounts_roles", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "account_id"
+  end
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "bands", :force => true do |t|
@@ -54,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121110234537) do
     t.integer  "band_id"
     t.string   "song"
     t.string   "name"
+    t.integer  "album_id"
   end
 
   create_table "users", :force => true do |t|

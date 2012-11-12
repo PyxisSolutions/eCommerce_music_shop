@@ -1,18 +1,15 @@
 # == Schema Information
 #
-# Table name: tracks
+# Table name: albums
 #
 #  id         :integer          not null, primary key
+#  name       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  band_id    :integer
-#  song       :string(255)
-#  name       :string(255)
-#  album_id   :integer
 #
 
 require 'spec_helper'
 
-describe Track do
+describe Album do
   pending "add some examples to (or delete) #{__FILE__}"
 end
