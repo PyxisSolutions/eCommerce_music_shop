@@ -5,7 +5,9 @@ class TracksController < ApplicationController
 	end
 
 	def create
-		@track = Band.find(params[:track][:band_id]).tracks.create(params[:track])
+		@band = Band.find(session[:band_id])
+		@track = @band.tracks.create(params[:track])
+		
 
 		# @track = Track.new(params[:track])
 		# if @track.save

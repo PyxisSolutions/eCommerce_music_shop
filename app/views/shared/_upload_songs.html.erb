@@ -1,0 +1,5 @@
+<%= form_for Track.new do |f| %>
+	<%= f.hidden_field :band_id, :value => params[:id] %>
+	<%= f.label :song, "Upload songs:" %>
+	<%= f.file_field :song, multiple: true, name: "track[song]" %>
+<% end %>

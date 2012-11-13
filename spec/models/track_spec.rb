@@ -9,6 +9,7 @@
 #  song       :string(255)
 #  name       :string(255)
 #  album_id   :integer
+#  image_url  :string(255)
 #
 
 require 'spec_helper'

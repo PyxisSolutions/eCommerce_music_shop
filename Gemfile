@@ -9,6 +9,9 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'paperclip', '3.3.1'
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'sidekiq'
+gem 'fog'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.5'

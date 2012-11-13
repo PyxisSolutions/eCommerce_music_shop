@@ -8,11 +8,11 @@
 		</section>	
 		<% if allow_upload? %>
 			<section>
-				<%= link_to "Add a song", new_track_path(:band_id => @band) %>
-				<%= form_for Track.new do |f| %>
-					<%= f.hidden_field :band_id, :value => params[:id] %>
-					<%= f.label :song, "Upload songs:" %>
-					<%= f.file_field :song, multiple: true, name: "track[song]" %>
+				<% session[:band_id] = params[:id] %>
+<!-- 				<%= link_to "Add a song", new_track_path(:band_id => @band) %> -->
+<!-- 				<%= render 'shared/upload_songs' %> -->
+				<%= s3_uploader_form post: tracks_url, as: "track[image_url]" do %>
+					<%= file_field_tag :file, multiple: true %>
 				<% end %>
 				<script id="template-upload" type="text/x-tmpl">
 					<div class="upload">
