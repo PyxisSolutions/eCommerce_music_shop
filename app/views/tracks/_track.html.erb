@@ -1,7 +1,8 @@
 <li>
 	<span class="content"><%= track.name %></span>
+	<%= link_to "download", track_path(track) %>
 	<% if current_account?(track.band) || admin? %>
-		<%= link_to "delete", track, method: :delete,
+		| <%= link_to "delete", track, method: :delete,
 										data: { confirm: "You sure?"} %>
 	<% end %>
 </li>

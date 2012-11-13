@@ -5,10 +5,14 @@ ECommerceMusicShop::Application.routes.draw do
   resources :tracks
   resources :sessions, only: [:new, :create, :destroy]
 
+
+
   match '/signup'   => 'accounts#newUser'
   match '/signupUser'   => 'accounts#createUser'
   match '/signupBand'   => 'accounts#newBand'
   match '/createBand'   => 'accounts#createBand'
+
+  match '/download' => 'tracks#show'
 
   match '/signin'   => 'sessions#new'
   match '/signout'  => 'sessions#destroy'

@@ -22,8 +22,15 @@ class Track < ActiveRecord::Base
   # mount_uploader :song, SongUploader
 
   before_create :default_name
-
+  # before_create :before_validation
+  
   def default_name
 	self.name ||= File.basename(image_url, '.*')#.titleize  	
   end
+
+  # def before_validation
+  # 	  self.audio_content_type = FileMagic.new(FileMagic::MAGIC_MIME).file(self.audio.to_file.path).gsub(/\n/,"").split(";").first
+
+  # end
+
 end
