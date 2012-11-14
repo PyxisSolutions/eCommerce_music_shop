@@ -24,8 +24,6 @@ class TracksController < ApplicationController
 
 	def show
 		@track = Track.find(params[:id])
-
-
 		establish_connection
 		@url = AWS::S3::S3Object.url_for("uploads/" + @track.name + @track.file_type, 'ecommerce_music_shop')
 	end
