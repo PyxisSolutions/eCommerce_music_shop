@@ -10,6 +10,7 @@
 #  name       :string(255)
 #  album_id   :integer
 #  image_url  :string(255)
+#  file_type  :string(255)
 #
 
 class Track < ActiveRecord::Base
@@ -22,10 +23,15 @@ class Track < ActiveRecord::Base
   # mount_uploader :song, SongUploader
 
   before_create :default_name
+  before_create :default_file_type
   # before_create :before_validation
   
   def default_name
-	self.name ||= File.basename(image_url, '.*')#.titleize  	
+    self.name ||= File.basename(image_url, '.*')#.titleize  	
+  end
+
+  def default_file_type
+    self.file_type ||= File.extname(image_url)
   end
 
   # def before_validation

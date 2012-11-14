@@ -13,6 +13,8 @@ gem 'carrierwave_direct'
 gem 'sidekiq'
 gem 'fog'
 
+gem 'aws-s3'
+
 group :development, :test do
 	gem 'sqlite3', '1.3.5'
 	gem 'rspec-rails', '2.11.0'

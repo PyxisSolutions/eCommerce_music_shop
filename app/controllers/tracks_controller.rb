@@ -24,5 +24,12 @@ class TracksController < ApplicationController
 
 	def show
 		@track = Track.find(params[:id])
+
+
+		AWS::S3::Base.establish_connection!(
+			:access_key_id		=> 'AKIAJ4TPEHBSQQPIMGHA',
+			:secret_access_key	=> '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'
+		)
+		@url = AWS::S3::S3Object.url_for("uploads/" + @track.name + @track.file_type, 'ecommerce_music_shop')
 	end
 end
