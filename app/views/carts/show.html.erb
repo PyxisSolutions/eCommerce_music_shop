@@ -8,12 +8,12 @@
 	<% for line_item in @cart.line_items %>
 		<tr class="<%= cycle :odd, :even %>">
 			<td><%=h line_item.track.name %></td>
-			<td class="price"><%= number_to_currency(line_item.full_price) %></td>
+			<td class="price"><%= number_to_currency_gbp(line_item.full_price) %></td>
 		</tr>
 	<% end %>
 	<tr>
 		<td class="total price" colspan="4">
-			Total: <%= number_to_currency @cart.total_price %>
+			Total: <%= number_to_currency_gbp @cart.total_price %>
 		</td>
 	</tr>
 </table>
