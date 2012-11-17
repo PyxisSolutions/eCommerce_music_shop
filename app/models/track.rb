@@ -11,6 +11,7 @@
 #  album_id   :integer
 #  image_url  :string(255)
 #  file_type  :string(255)
+#  price      :decimal(, )
 #
 
 class Track < ActiveRecord::Base
@@ -25,6 +26,7 @@ class Track < ActiveRecord::Base
   before_create :default_name
   before_create :default_file_type
   # before_create :set_title
+  before_create :default_price
   # before_create :before_validation
   
   def default_name
@@ -37,6 +39,10 @@ class Track < ActiveRecord::Base
 
   def set_title
     self.title ||= self.name.humanize
+  end
+
+  def default_price
+    self.price ||= 0.79
   end
 
   # def before_validation

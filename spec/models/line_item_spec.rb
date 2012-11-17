@@ -1,21 +1,17 @@
 # == Schema Information
 #
-# Table name: tracks
+# Table name: line_items
 #
 #  id         :integer          not null, primary key
+#  unit_price :decimal(, )
+#  track_id   :integer
+#  cart_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  band_id    :integer
-#  song       :string(255)
-#  name       :string(255)
-#  album_id   :integer
-#  image_url  :string(255)
-#  file_type  :string(255)
-#  price      :decimal(, )
 #
 
 require 'spec_helper'
 
-describe Track do
+describe LineItem do
   pending "add some examples to (or delete) #{__FILE__}"
 end

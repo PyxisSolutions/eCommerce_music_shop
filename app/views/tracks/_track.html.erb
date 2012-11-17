@@ -1,6 +1,7 @@
 <li>
 	<span class="content"><%= track.name %></span>
-	<%= link_to "download", track_path(track) %>
+	<%= link_to "download", track_path(track) %> |
+	<%= link_to "Add to cart", line_items_path(:track_id => track), :method => :post %>
 	<% if current_account?(track.band) || admin? %>
 		| <%= link_to "delete", track, method: :delete,
 										data: { confirm: "You sure?"} %>

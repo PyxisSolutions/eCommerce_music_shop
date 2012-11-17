@@ -1,10 +1,17 @@
 ECommerceMusicShop::Application.routes.draw do
+
+  # map.current_cart 'cart', :controller => 'carts', :action => 'show'#, :id => 'current'
+
   resources :accounts
   resources :users
   resources :bands
   resources :tracks
   resources :sessions, only: [:new, :create, :destroy]
+  resources :line_items
+  resources :carts
 
+  # match '/show/:cart/:id' => 'current_cart'
+  match 'current_cart' => 'carts#show'
 
 
   match '/signup'   => 'accounts#newUser'
