@@ -5,6 +5,6 @@ class BandsController < ApplicationController
 
 	def show
 		@band = Band.find(params[:id])
-		@tracks = @band.tracks.paginate(page: params[:page])
+		@tracks = @band.tracks.paginate(page: params[:page], per_page: 10)
 	end
 end

@@ -13,6 +13,8 @@ gem 'carrierwave_direct'
 gem 'sidekiq'
 gem 'fog'
 
+gem 'ruby-filemagic'
+
 gem 'aws-s3'
 
 group :development, :test do
@@ -49,3 +51,5 @@ end
 group :production do
 	gem 'pg', '0.12.2'
 end
+
+gem 'unicorn'

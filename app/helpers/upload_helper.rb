@@ -15,7 +15,7 @@ module UploadHelper
 				aws_acces_key_id: "AKIAJ4TPEHBSQQPIMGHA",
 				aws_secret_access_key: "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",
 				bucket: "ecommerce_music_shop",
-				acl: "public-read",
+				acl: "private",
 				expiration: 10.hours.from_now,
 				max_file_size: 500.megabytes,
 				as: "file"

@@ -26,6 +26,7 @@ class TracksController < ApplicationController
 		@track = Track.find(params[:id])
 		establish_connection
 		@url = AWS::S3::S3Object.url_for("uploads/" + @track.name + @track.file_type, 'ecommerce_music_shop')
+		redirect_to @url
 	end
 
 	private

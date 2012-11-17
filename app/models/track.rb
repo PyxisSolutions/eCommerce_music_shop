@@ -24,6 +24,7 @@ class Track < ActiveRecord::Base
 
   before_create :default_name
   before_create :default_file_type
+  # before_create :set_title
   # before_create :before_validation
   
   def default_name
@@ -32,6 +33,10 @@ class Track < ActiveRecord::Base
 
   def default_file_type
     self.file_type ||= File.extname(image_url)
+  end
+
+  def set_title
+    self.title ||= self.name.humanize
   end
 
   # def before_validation
