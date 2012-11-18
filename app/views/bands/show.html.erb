@@ -24,12 +24,10 @@
 		<% end %>
 	</aside>
 	<div class="span8">
-		<% if @band.tracks.any? %>
-			<h3>Tracks: (<%= @band.tracks.count %>)</h3>
-			<ol class="microposts">
-				<%= render @tracks %>
-			</ol>
-			<%= will_paginate @tracks %>
-		<% end %>
+		<h3>Tracks</h3>
+		<ol class="microposts">
+			<%= render @tracks %>
+		</ol>
+		<%= will_paginate @tracks %>
 	</div>
 </div>

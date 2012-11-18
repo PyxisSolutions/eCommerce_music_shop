@@ -1,7 +1,7 @@
 class PaypalExpressController < ApplicationController
 
 	def checkout
-		setup_response = gateway.setup_purchase((current_cart.total_price*100),
+		setup_response = gateway.setup_purchase(current_cart.total_price*100,
 			:ip => request.remote_ip,
 			:return_url => url_for(:action => 'confirm', :only_path => false),
 			:cancel_return_url => url_for(:controller => 'bands', :action => 'index', :only_path => false)
@@ -23,20 +23,21 @@ class PaypalExpressController < ApplicationController
 	end
 
 	def purchase
-		purchase = gateway.purchase((current_cart.total_price*100),
+		purchase = gateway.purchase(current_cart.total_price*100,
 			:ip => request.remote_ip,
 			:token => session[:tokenID],
-			:payer_id => session[:payerID],
+			:payer_id => session[:payerID]
 		)
 
 		if purchase.success?
 			notice = "Thanks! Your purchase is complete!"
+			add_to_purchased_list
+			session[:tokenID] = nil
+			session[:payerID] = nil
+			current_cart.purchased_at = Time.now
 		else
 			notice = "Something went wrong. Paypal says: #{purchase.message}"
 		end
-
-		session[:tokenID] = nil
-		session[:payerID] = nil
 
 		redirect_to root_url, :notice => notice
 
@@ -50,4 +51,11 @@ class PaypalExpressController < ApplicationController
 				:signature => "AKlXxHry-.fFIRzFOUtVan9dO4qXAsMTGGGKGXBzD4I6KLT9VA72Kvki"
 			)
 		end
+
+		def add_to_purchased_list
+			current_cart.line_items.each do |line_item| 
+				current_account.user.purchases.create(track_id: line_item.track.id)
+			end
+		end
+
 end

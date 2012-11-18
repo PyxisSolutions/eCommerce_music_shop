@@ -15,11 +15,14 @@
 #
 
 class Track < ActiveRecord::Base
-  attr_accessible :band_id, :name, :image_url
+  attr_accessible :band_id, :name, :image_url, :song
 
   belongs_to :band
 
   belongs_to :album
+
+  has_many :purchases
+  has_many :users, :through => :purchases
 
   # mount_uploader :song, SongUploader
 

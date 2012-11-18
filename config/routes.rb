@@ -1,7 +1,5 @@
 ECommerceMusicShop::Application.routes.draw do
 
-  # map.current_cart 'cart', :controller => 'carts', :action => 'show'#, :id => 'current'
-
   resources :accounts
   resources :users
   resources :bands
@@ -10,9 +8,7 @@ ECommerceMusicShop::Application.routes.draw do
   resources :line_items
   resources :carts
 
-  # match '/show/:cart/:id' => 'current_cart'
-  match 'current_cart' => 'carts#show'
-
+  match 'cart' => 'carts#show'
 
   get "paypal_express/checkout"
   get "paypal_express/confirm"

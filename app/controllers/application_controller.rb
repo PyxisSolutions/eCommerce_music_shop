@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   	# 	session[:cart_id] = @current_cart.id
   	# end
 
-  	  	session[:cart_id] ||= Cart.create!.id
+  	session[:cart_id] ||= Cart.create!.id
   	@current_cart ||= Cart.find(session[:cart_id])
   end
 
