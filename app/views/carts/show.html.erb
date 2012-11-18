@@ -20,5 +20,5 @@
 
 <p>
 	<%= link_to "Continue Shopping", '#' %> |
-	<%= link_to "Checkout", '#' %> <!-- @cart.paypal_url(products_url) -->
+	<%= link_to "Checkout", :controller => 'paypal_express', :action => 'checkout' %> <!-- @cart.paypal_url(products_url) -->
 </p>

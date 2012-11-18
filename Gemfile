@@ -13,6 +13,8 @@ gem 'carrierwave_direct'
 gem 'sidekiq'
 gem 'fog'
 
+gem 'activemerchant'
+
 gem 'ruby-filemagic'
 
 gem 'aws-s3'

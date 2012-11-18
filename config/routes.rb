@@ -14,6 +14,10 @@ ECommerceMusicShop::Application.routes.draw do
   match 'current_cart' => 'carts#show'
 
 
+  get "paypal_express/checkout"
+  get "paypal_express/confirm"
+  get "paypal_express/purchase"
+
   match '/signup'   => 'accounts#newUser'
   match '/signupUser'   => 'accounts#createUser'
   match '/signupBand'   => 'accounts#newBand'
