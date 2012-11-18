@@ -14,5 +14,5 @@ class User < ActiveRecord::Base
 	belongs_to :account,	:dependent => :destroy
 
 	validates	:name,	:presence => true,
-  						:length => { :maximum => 50 }
+						:length => { :maximum => 50 }
 end

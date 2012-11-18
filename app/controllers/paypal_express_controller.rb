@@ -1,7 +1,7 @@
 class PaypalExpressController < ApplicationController
 
 	def checkout
-		setup_response = gateway.setup_purchase(current_cart.total_price*100,
+		setup_response = gateway.setup_purchase((current_cart.total_price*100),
 			:ip => request.remote_ip,
 			:return_url => url_for(:action => 'confirm', :only_path => false),
 			:cancel_return_url => url_for(:controller => 'bands', :action => 'index', :only_path => false)
@@ -15,7 +15,7 @@ class PaypalExpressController < ApplicationController
 		session[:payerID] = params[:PayerID]
 		if !customer_details.success?
 			@message = details_response.message
-			render :action => 'error'
+			flash[:notice] = @message
 			return
 		end
 
@@ -23,7 +23,7 @@ class PaypalExpressController < ApplicationController
 	end
 
 	def purchase
-		purchase = gateway.purchase(current_cart.total_price*100,
+		purchase = gateway.purchase((current_cart.total_price*100),
 			:ip => request.remote_ip,
 			:token => session[:tokenID],
 			:payer_id => session[:payerID],
@@ -34,6 +34,9 @@ class PaypalExpressController < ApplicationController
 		else
 			notice = "Something went wrong. Paypal says: #{purchase.message}"
 		end
+
+		session[:tokenID] = nil
+		session[:payerID] = nil
 
 		redirect_to root_url, :notice => notice
 

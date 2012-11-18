@@ -1,5 +1,2 @@
-
-
 <p>Name: <%= @address['name'] %></p>
-<%= hidden_field_tag 'tokenname', params[:token] %>
 <%= link_to "Confirm", :controller => 'paypal_express', :action => 'purchase' %>
