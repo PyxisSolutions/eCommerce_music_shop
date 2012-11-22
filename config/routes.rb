@@ -7,12 +7,17 @@ ECommerceMusicShop::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :line_items
   resources :carts
+  resources :purchases
 
   match 'cart' => 'carts#show'
+
+  get "purchases/index"
 
   get "paypal_express/checkout"
   get "paypal_express/confirm"
   get "paypal_express/purchase"
+
+  match '/purchases' => 'purchases#index'
 
   match '/signup'   => 'accounts#newUser'
   match '/signupUser'   => 'accounts#createUser'

@@ -35,6 +35,8 @@ class PaypalExpressController < ApplicationController
 			session[:tokenID] = nil
 			session[:payerID] = nil
 			current_cart.purchased_at = Time.now
+			session[:cart_id] = nil
+			reset_session
 		else
 			notice = "Something went wrong. Paypal says: #{purchase.message}"
 		end

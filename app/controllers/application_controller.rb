@@ -23,17 +23,11 @@ class ApplicationController < ActionController::Base
 
 
   def current_cart
-  	# session.delete(:cart_id)
-  	# if session[:cart_id]
-  	# 	@current_cart = Cart.find(session[:cart_id])
-  	# else
-  	# 	@current_cart = Cart.create
-  	# 	session[:cart_id] = @current_cart.id
-  	# end
+    if session[:cart_id] == nil
+      session[:cart_id] = Cart.create!.id
+    end
 
-  	session[:cart_id] ||= Cart.create!.id
-  	@current_cart ||= Cart.find(session[:cart_id])
+    @current_cart ||= Cart.find(session[:cart_id])
   end
-
 
 end

@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
-
+	include TracksHelper
+	before_filter :is_track_purchased, :only => :show
+	before_filter :correct_band, :only => [:new, :create]
 	def new
 		@track = Track.new(:band_id => params[:band_id])
 	end
@@ -35,6 +37,10 @@ class TracksController < ApplicationController
 				:access_key_id		=> 'AKIAJ4TPEHBSQQPIMGHA',
 				:secret_access_key	=> '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'
 			)
+		end
+
+		def is_track_purchased
+			@track = Track.find(params[:id]) 
 		end
 
 end

@@ -9,6 +9,7 @@
 					<% if signed_in? %>
 						<%= render 'layouts/admin_bar' %>
 						<%= render 'layouts/band_bar' %>
+						<%= render 'layouts/user_bar' %>
 						<%= render 'layouts/account_bar' %>
 					<% else %>
 						<li><%= link_to "Sign in", signin_path %></li>

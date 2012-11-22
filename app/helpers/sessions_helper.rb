@@ -65,9 +65,18 @@ module SessionsHelper
       redirect_to(root_path) unless current_account?(@account) || admin?
     end
 
+    def correct_band
+    	@band = current_account.band
+    	redirect_to(root_path) unless current_band?(@band) || admin?
+    end
+
     def allow_upload?
-    	@account = Account.find(params[:id])
-    	current_account?(@account) || admin?
+    	@account = Band.find(params[:id])
+    	current_band?(@account) || admin?
+    end
+
+    def current_band?(band)
+    	band == current_account.band
     end
 
 end
