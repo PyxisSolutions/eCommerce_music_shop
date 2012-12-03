@@ -2,6 +2,7 @@ class TracksController < ApplicationController
 	include TracksHelper
 	before_filter :is_track_purchased, :only => :show
 	before_filter :correct_band, :only => [:new, :create]
+
 	def new
 		@track = Track.new(:band_id => params[:band_id])
 	end
@@ -21,7 +22,12 @@ class TracksController < ApplicationController
 	end
 
 	def destroy
-		
+		@track = Track.find(params[:id])
+
+		if current_band?(@track.band) || admin?
+			flash[:success] = "Track deleted"
+			@track.destroy
+		end
 	end
 
 	def show

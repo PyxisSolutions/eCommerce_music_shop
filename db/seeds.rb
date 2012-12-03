@@ -98,19 +98,25 @@ r.controller = "purchases"
 r.action = "index"
 r.save
 
+r = Right.new
+r.name = "delete bands"
+r.controller = "bands"
+r.action = "destroy"
+r.save
+
 [4, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16].each do |i|
 	role = Role.find_by_name("standard_user")
 	role.rights << Right.find_by_id(i)
 	role.save
 end
 
-[5, 6, 7, 8].each do |i|
+[5, 6, 7, 8, 17].each do |i|
 	role = Role.find_by_name("band")
 	role.rights << Right.find_by_id(i)
 	role.save
 end
 
-[1,2,3,4,5,6,7,8,9,11,12,13,14,15,16].each do |i|
+[1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17].each do |i|
 	role = Role.find_by_name("admin")
 	role.rights << Right.find_by_id(i)
 	role.save
