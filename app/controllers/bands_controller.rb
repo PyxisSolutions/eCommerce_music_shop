@@ -1,4 +1,5 @@
 class BandsController < ApplicationController
+
 	def index
 		# reset_session
 		@bands = Band.paginate(page: params[:page], per_page: 10)

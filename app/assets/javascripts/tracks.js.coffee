@@ -4,14 +4,14 @@
 jQuery ->
   $('#fileupload').fileupload
     add: (e, data) ->
-      types = /(\.|\/)(gif|jpe?g|png|zip)$/i
+      types = /(\.|\/)(mp3|wma|ogg)$/i
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
         data.context = $(tmpl("template-upload", file))
         $('.microposts').append(data.context)
         data.submit()
       else
-        alert("#{file.name} is not a gif, jpeg, or png image file")
+        alert("#{file.name} is not an allowed music file")
     
     progress: (e, data) ->
       if data.context
