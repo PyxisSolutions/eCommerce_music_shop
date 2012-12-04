@@ -11,6 +11,8 @@
 
 			<%= render 'account_fields', f: f %>	
 
+			<p>By creating an account, you confirm that you adhere to our <%= link_to "Terms & Conditions", terms_path %></p>
+
 			<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 
 		<% end %>
